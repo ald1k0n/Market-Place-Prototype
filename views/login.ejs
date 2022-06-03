@@ -1,0 +1,30 @@
+<%-include('partials/header.ejs')-%>
+
+<div class="container">
+    <div class="login form-floating">
+        <form action="/login" method="post">
+            
+            <h1 class="text-black text-center">Log in:</h1>
+            <%if(error.length>0){%>
+                <label><%=error%></label>    
+            <%}%>
+            <div class="inputs" style="width:60%; display: block; margin-right: auto; margin-left: auto;">
+                <label for="username">Username</label>
+                <input class="text-center form-control" type="text" name="username" placeholder="Login" autocomplete="false" required="true">
+            </div>
+            <div class="inputs" style="width:60%; display: block; margin-right: auto; margin-left: auto;">
+                <label for="password">Password</label>
+                <input class="text-center form-control" type="password" name="password" placeholder="Password" autocomplete="false" required="true">
+                <button class="btn btn-primary mt-2 text-center submit-btn" type="submit">Log in</button>
+
+                <p class="d-flex" >Not a member: <a href="/register" style="text-decoration:none"> Create an account</a></p>
+            </div>
+            
+
+        </div>
+    </div>
+</div>
+
+
+
+<%-include('partials/footer.ejs')-%>

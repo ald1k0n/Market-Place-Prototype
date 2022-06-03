@@ -1,0 +1,35 @@
+<%- include('partials/header'); -%>
+
+<div class="container">
+    <div class="login">
+        <div class="posting">
+            <form action="/create" method="post" enctype="multipart/form-data">
+               <label for="title">Name: </label>
+                <input class="form-control" type="text" name="title" placeholder="Name" required autocomplete="false">
+                <label for="category">Category: </label>
+                <select name="category" class="form-select">
+                    <option value="Home">Home</option>
+                    <option value="Technology">Technology</option>
+                    <option value="Office">Office</option>
+                </select>
+                <label for="description">Description: </label>
+                <textarea class="form-control" name="description"></textarea>
+                <label for="contacts">Contacts:</label>
+                <input class="form-control" type="text" name="contact" placeholder="Contacts" required>
+                <label for="photo">Photo:</label>
+                <input type="file" class="form-control" name="photo">
+                <label for="price">Price</label>
+                <input class="form-control w-50" type="number" name="price" placeholder="Price" required autocomplete="false">
+                <button class="btn btn-md mt-2 btn-primary" type="submit">Create an ad</button>
+            </form>
+        </div>
+    </div>
+    
+</div>
+
+
+
+
+
+
+<%- include('partials/footer'); -%>

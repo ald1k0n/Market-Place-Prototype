@@ -1,0 +1,53 @@
+<%-include('partials/header.ejs')-%>
+
+<div class="container">
+    <div class="login">
+        <div class="row">
+            <a style="text-decoration:none" href="/"><h4 class="text-black">Back</h4></a>
+        </div>
+        <div class="row">
+            <div class="photo col-8">
+                <img width="100%" src="<%=items.photo%>">
+                <p style="color:rgb(49, 49, 49);font-size: 12px;"><%=items.date%></p>
+                <h2 class="text-black"><%=items.title%></h2>
+                <h5 class="d-flex"><%=items.price%>$
+                    <form action="/add" method="post">
+                        <button class="btn btn-sm align-items-center" name="cart" value="<%=items._id%>" type="submit">Add to cart</button>
+                    </form>
+                </h5>
+                <hr>
+                <h4>Description</h4>
+                <p><%=items.description%></p>
+            </div>
+            <div class="offset-1 col-3">
+                <div class="seller">
+                    <h4 class="text-center">Seller: <%=items.username%></h4>
+                    <a style="text-decoration:none;"  href="/items/<%=items.username%>"><p style="color:rgb(94, 93, 93)" class="text-center">Author's ads ></p></a>
+                    <hr>
+                    <button onclick="showContact()" style="display:block;margin-right:auto;margin-left:auto" class="btn btn-outline-primary btn-block">Contact</button>
+                    <div class="text-center mt-2" id="contact">
+                        <p></p>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+
+<script>
+    let pressed = false;
+    function showContact(){
+        pressed = !pressed;
+        document.getElementById("contact").innerHTML = "<%=items.contacts%>"
+        if(pressed) {
+            document.getElementById('contact').style.display = 'none';
+        } else {
+            document.getElementById('contact').style.display = 'block';
+        }
+    }
+
+</script>
+<%-include('partials/footer.ejs')-%>

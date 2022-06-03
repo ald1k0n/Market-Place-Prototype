@@ -1,0 +1,24 @@
+<%-include('partials/header.ejs')-%>
+
+<div class="container">
+    <div class="login form-floating">
+        <form action="/register" method="post">
+            <h1 class="text-black text-center" >Register:</h1>
+            <div class="inputs" style="width:60%; display: block; margin-right: auto; margin-left: auto;">
+                <label for="email">Login:</label>
+                <input class="text-center form-control" type="text" placeholder="Login" name="username" required="true">
+            </div>
+            <div class="inputs" style="width:60%; display: block; margin-right: auto; margin-left: auto;">
+                <label for="email">Password:</label>
+                <input class="text-center form-control" type="password" placeholder="Password" name="password" required="true">
+                <button class="btn btn-primary mt-2 text-center submit-btn" type="submit">Register</button>
+            </div>
+        </form>
+        
+    </div>
+</div>
+
+
+
+
+<%-include('partials/footer.ejs')-%>

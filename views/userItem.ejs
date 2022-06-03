@@ -1,0 +1,32 @@
+<%-include('partials/header.ejs')-%>
+<div class="container">
+    <div class="login">
+        <%for(let i=0;i<items.length;i++){%>
+            <a style="text-decoration:none" href="/item/<%=items[i]._id%>">
+                <h3 class="text-black"><%=items[i].username%></h3>
+                <hr class="mb-4">
+                <div class="row align-items-center">
+                    <div class="item d-flex">
+                        <div class="img col-3">
+                            <img class="photo-user" src="<%=items[i].photo%>">
+                        </div>
+                        <div class="titleName col-8">
+                            <h4 class="text-center text-black"><%=items[i].title%></h4>
+                            <p class="text-black"><%=items[i].description%></p>
+                            
+                        </div>
+                    </div>
+                    <div class="date">
+                        <p class="offset-10" style="color:rgb(49, 49, 49); font-size:12px"><%=items[i].date%></p>
+                    </div>
+                </div>
+            </a>
+            
+        <%}%>
+        
+    </div>
+</div>
+
+
+
+<%-include('partials/footer.ejs')-%>

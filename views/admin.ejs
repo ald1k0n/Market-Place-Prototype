@@ -1,0 +1,50 @@
+<%-include('partials/header.ejs')-%>
+
+<div class="container">
+    <div class="login">
+        <h1 class="text-center"t>Admin panel</h1>
+    </div>
+    <hr>
+    <div class="row mt-4">
+        <div class="accounts col-3">
+            <h4 class="text-center">Users:</h4>
+            <div class="names  align-items-top">
+                <%for(let i=0;i<users.length;i++){%>
+                <p style="font-size:20px"><%=users[i].username%></p>
+                <div class="del" >
+                    <form action="/delUser" method="post">
+                            <button name="delbtn" class="btn btn-primary btn-sm" style="background-color: #f53232; border:none;" type="submit" value="<%=users[i]._id%>">
+                            <i class="fa-solid fa-trash-can fa-xs"></i>
+                        </button>
+                    </form>
+                </div>
+                <hr>
+            <%}%>
+        </div>
+        </div>
+
+        <div class="col-6 offset-3 onSale">
+            <h4 class="text-center"t>On Sale:</h4>
+            <div class="ons align-items-center justify-content-center">
+                <%for(let i=0;i<items.length;i++){%>
+                    <h6 class="text-center"><%=items[i].title%></h6>
+                    <img class="col-3" style="display:block;margin-right:auto;margin-left:auto" src="<%=items[i].photo%>">
+                    <p class="text-center" style="font-weight:bold"><%=items[i].username%></p>
+                    <div class="delb mt-2">
+                        <form action="/deleteOnS" method="post">
+                                                <button name="delbtn" class="btn btn-primary btn-sm" style="display:block;margin-right:auto;margin-left:auto;background-color: #f53232; border:none;" type="submit" value="<%=items[i]._id%>">
+                                                    <i class="fa-solid fa-trash-can fa-lg"></i>
+                                                    Delete Item
+                                                </button>
+                                            </form>
+                    </div>
+                    <hr>
+                <%}%>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+
+<%-include('partials/footer.ejs')-%>

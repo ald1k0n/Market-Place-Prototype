@@ -1,0 +1,57 @@
+<%-include('partials/header.ejs')-%>
+
+<div class="login">
+    <div class="container">
+        <h3>Cart</h3>
+        <h6>Elements: <%=items.length%></h6>
+        <hr>
+        <%for(let i=0;i<items.length;i++){%>
+            <a style="text-decoration:none" href="/item/<%=items[i].link%>">
+                <h3 class="text-black"><%=items[i].username%></h3>
+                <hr class="mb-4">
+                <div class="row align-items-center">
+                    <div class="item d-flex">
+                        <div class="img col-2">
+                            <img class="cart-img" src="<%=items[i].img%>">
+                        </div>
+                        <div class="titleName col-8">
+                            <h4 class="text-center text-black"><%=items[i].itemName%></h4>
+                        </div>
+                        
+                        <div class="date align-item-end">
+                            <p style="color:rgb(19, 112, 19);font-size: 25px;" class=""><%=items[i].price%>$</p>
+                        </div>
+                        
+                    </div>
+                </div>
+            </a>
+            <div class="delete">
+                <form action="/deletecart" method="post">
+                    <button name="delbtn" class="btn btn-primary btn-sm offset-10" style="background-color: #f53232; border:none" type="submit" value="<%=items[i]._id%>">
+                        <i class="fa-solid fa-trash-can"></i>
+                        Delete
+                    </button>
+                </form>
+            </div>
+            <hr>
+        <%}%>
+
+        <div class="total mt-5">
+            <div class="footer">
+                 <div class="totalTitle">
+                <h3 class="text-center text-white">Cart Total Sum:</h3>
+                <%let sum=0%>
+                <div class="totalItem">
+                    <%for(let i=0;i<items.length;i++){%>
+                        <%sum+=Number(items[i].price)%>
+                    <%}%>
+                    <h2 class="text-white text-center"><%=sum%>$</h2>
+                </div>
+            </div>
+           
+        </div>
+    </div>
+</div>
+
+
+<%-include('partials/footer.ejs')-%>

@@ -1,0 +1,59 @@
+<%-include('partials/header.ejs')-%>
+
+<div class="container">
+    <div class="searchbox">
+        <div class="row height d-flex justify-content-center align-items-center">
+            <div class="col-md-8">
+                <form action="/search" method="post">
+                    <div class="search">
+                        <i class="fa fa-search"></i>
+                        <input autocomplete="off" type="text" name="search" class="form-control" placeholder="Search...">
+                        <button type="submit" class="btn btn-primary">Search</button>
+                      </div>
+                </form>
+            </div>        
+          </div>
+    </div>
+
+    <h1 class="mt-5 mb-3 text-center">The Newest Ads:</h1>
+    <hr>
+    <div class="offset-2 items">
+        
+            <%for(let i=items.length-1;i>=0;i--){%>
+            <a href="/item/<%=items[i]._id%>">
+                    <div class="announce col-3 d-inline-block">
+                        <img class="itemImage" src="<%=items[i].photo%>">
+                        <div class="overlay">
+                            <div class="img-title">
+                                <p class="mt-1 text-center" style="font-size:2em; font-weight:bold"><%=items[i].title%></p>
+                            </div>
+                            <p class="discr">
+                                <%if(items[i].description.length>100){%>
+                                    <p class="text-center"><%=items[i].description.substring(0,100) + "..."%></p>
+                                <%}%>
+                                <%if(items[i].description.length<=100){%>
+                                    <p class="text-center"><%=items[i].description%></p>
+                                <%}%>
+                                <p class="text-center" style="color:rgb(218, 218, 218);font-size: 10px;"><%=items[i].date%></p>
+                            </p>
+                        </div>
+                    </div>
+            </a>
+        <%}%>
+    </div>
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+<%-include('partials/footer.ejs')-%>

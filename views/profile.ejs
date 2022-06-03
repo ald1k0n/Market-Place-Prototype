@@ -1,0 +1,71 @@
+<%-include('partials/header.ejs')-%>
+<div class="container">
+    <div class="login">
+        <div class="container mt-3">
+            <div class="row justify-content-center">
+                <div class="col-3">
+                    <div class="person">
+                        <h5 class="text-center mt-3"> <%=name%></h5>
+                        <hr>
+                        <div class="links text-center mb-2">
+                            <a class="text-black" style="text-decoration:none" href="/create">Sell an item</a>
+                            
+                        </div>
+                        <div class="links text-center mb-3">
+                            <%if(name==="ALDIK"){%>
+                                <a style="text-decoration:none" class="text-black" href="/admin">Admin panel</a>
+                            <%}%>
+                        </div>
+                        <hr>
+                        <form action="/logout" method="post">
+                            <button style="display:block;margin-right:auto;margin-left:auto" class="btn" type="submit" name="logout">Log out</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-9">
+                    <div class="items offset-3">
+                        <h3 class="text-center">On sale:</h3>
+                        <%for(let i = result.length-1;i>=0;i--){%>
+                            <a href="/item/<%=result[i]._id%>" style="text-decoration:none">
+                                <div class="row align-items-center">
+                                    <div class="col-3">
+                                        <h5 class="text-black"><%=result[i].title%> | <span style="color:rgb(122, 19, 19)"><%=result[i].price%>$</span></h5>
+                                        <img class="photo " style="border:2px solid black" width="150px" height="150px" src="<%=result[i].photo%>">
+                                    </div>
+                                    <div class="col-6 descr">
+                                        <%if(result[i].description.length>150){%>
+                                            <p class="text-black"><%=result[i].description.substring(0,150) + "..."%></p>
+                                        <%}%>
+                                        <%if(result[i].description.length<=150){%>
+                                            <p class="text-black"><%=result[i].description%></p>
+                                        <%}%>
+                                        <div class="date">
+                                            <p style="color:rgb(49, 49, 49); font-size:12px"><%=result[i].date%></p>
+                                        </div>
+                                    </div>
+                                    <div class="delete">
+                                        <form action="/delete" method="post">
+                                            <button name="delbtn" class="btn btn-primary btn-sm offset-10" style="background-color: #f53232; border:none" type="submit" value="<%=result[i]._id%>">
+                                                <i class="fa-solid fa-trash-can"></i>
+                                                Delete
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </a>
+                            <hr>
+                        <%}%>
+                        <!-- <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+
+
+
+
+<%-include('partials/footer.ejs')-%>
